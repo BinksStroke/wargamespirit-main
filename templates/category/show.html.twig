@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ category.name }}
+{% endblock %}
+
+{% block body %}
+	<main class="background-content">
+		<div class="container">
+			<div class="home-content container row">
+				<div class="col-lg-10 col-xs-12">
+					<div id="carouselExampleControls" class="shadow-img carousel slide" data-bs-ride="carousel">
+						<div class="carousel-inner rounded">
+							<div class="carousel-item active">
+								<a href="https://wargamespirit.fr/accueil/10251-space-marine-heroes-serie-4-blood-angels-collection-5011921188550.html"><img src="{{ asset('assets/img/spacemarine.png') }}" class="d-block w-100" alt="..."></a>
+							</div>
+							<div class="carousel-item">
+								<a href="https://wargamespirit.fr/374-leagues-of-votann" target="_blank"><img src="{{ asset('assets/img/img-pub.png') }}" class="d-block w-100" alt="..."></a>
+							</div>
+							<div class="carousel-item">
+								<a href="https://wargamespirit.fr/144-jeux-gw" target="_blank"><img src="{{ asset('assets/img/warcry.jpg') }}" class="d-block w-100" alt="..."></a>
+							</div>
+						</div>
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+					<div class="g-5">
+						<div>
+							<h3 class="pb-4 mb-4 fst-italic border-bottom text-center title-category-subject">{{ category.name }}</h3>
+							<div id="article-list">
+								{% include 'subject/list.html.twig' with { subjects: category.subjects } %}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="annonces col-lg-2 col-xs-12">
+					<div class="img-pub col-sm-12">
+						<a href="https://wargamespirit.fr/301-laser-plants" target="_blank"><img class="shadow-img hover-pub" src="{{ asset('assets/img/demo.png') }}" alt=""></a>
+						<a href="https://wargamespirit.fr/301-laser-plants" target="_blank"><img class="shadow-img hover-pub" src="{{ asset('assets/img/selection_ak.png') }}" alt=""></a>
+					</div>
+
+					<div class="position-sticky main-right" style="top: 2rem;">
+						<div class="section-category p-4 mb-3 about rounded bg-light">
+							<h4 class="fst-italic shadow-category">Catégories</h4>
+							<ol class="list-unstyled mb-0 list-category">
+								{# Création de la boucle qui génère les catégories  #}
+								{% for category in categories %}
+									<li class="category-nav-right">
+										<a class="category-subject-link" href="{{ path('category_show', { slug: category.slug }) }}">{{ category.name }}</a>
+									</li>
+								{% endfor %}
+							</ol>
+						</div>
+						<div class="p-4 mb-3 bg-light rounded about">
+							<h4 class="fst-italic shadow-category">Un problème ?</h4>
+							<a class="link-support" href="">Les règles du forum</a>
+							<a class="link-support" href="">Assistance WargameSpirit</a>
+						</div>
+						<div class="p-4 mb-3 bg-light rounded about">
+							<h4 class="fst-italic shadow-category">Nous suivre</h4>
+							<ol class="list-unstyled">
+								<li class="category-nav-right">
+									<a class="link-support" href="https://www.instagram.com/wargamespirit/" target="_blank">Instagram</a>
+								</li>
+								<li class="category-nav-right">
+									<a class="link-support" href="https://twitter.com/SpiritWargame" target="_blank">Twitter</a>
+								</li>
+								<li class="category-nav-right">
+									<a class="link-support" href="https://www.facebook.com/wargamespirit/" targert="_blank">Facebook</a>
+								</li>
+								<li class="category-nav-right">
+									<a class="link-support" href="https://www.youtube.com/c/WargameSpirit" target="_blank">Discord</a>
+								</li>
+								<li class="category-nav-right">
+									<a class="link-support" href="https://www.youtube.com/c/WargameSpirit" target="_blank">YouTube</a>
+								</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<div class="home-content-two">
+					<a href="https://www.twitch.tv/wargamespirit"><img class="img-equipe" src="{{ asset('assets/img/spe.png') }}" alt=""></a>
+				</div>
+			</div>
+		</div>
+	</main>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page inscription
+{% endblock %}
+
+{% block body %}
+	<div class="connexion-radius">
+		<div class="background-co row">
+			<div class="container p-4 col-sm-6 col-lg-3 roboto-connexion">
+		        <div class="bg-light shadow-img connexion-radius">
+				{{ form_start(registrationForm) }}
+					<div class="color-back-co">
+						<h1 class="h3 mb-3 p-4 font-weight-normal text-center ll">Inscrivez-vous</h1>
+					</div>
+					{# {{ form_start(registrationForm) }} #}
+					<div class="mail-inscription">
+						<div class="paragraphe-inscription fst-italic p-4">
+							<p>Créez votre compte Univers WargameSpirit</p>
+						</div>
+					</div>
+					<div class="inscription-content p-4">
+
+
+						{{ form_row(registrationForm.email) }}
+
+
+						{{ form_row(registrationForm.plainPassword, {
+							
+            
+            label: 'Mot de passe'
+  }) }}
+
+					</div>
+
+
+					<div class="d-grid mx-auto">
+						<button class="btn btn-lg btn-success" type="submit">S'inscrire</button>
+					</div>
+
+					<p class="p-4 fst-italic">Vous  possédez déjà un compte Univers WargameSpirit?
+						<a class="link-to-insc" href="{{ path('app_login') }}">Connectez-vous à votre compte </a>
+					</p>
+
+				</div>
+
+
+				{{ form_end(registrationForm) }}
+
+
+			</div>
+
+		</div>
+	</div>
+</form></div>{% endblock %}

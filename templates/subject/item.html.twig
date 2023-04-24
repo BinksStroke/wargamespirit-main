@@ -1,0 +1,21 @@
+{% set app_description_subject = path('app_description_subject', { 'slug': subject.slug }) %}
+
+<article class="mb-5 shadow-img bg-light">
+	<div class="row p-4 subject-item">
+        <div class="epingle-center col-md-2">
+			<a href="{{ app_description_subject }}">
+				<img class="epingle-link" src= "{{ asset('assets/img/epingle-en-papier.png')}}" alt="" loading="lazy" width="35" height="35">
+			</a>
+		</div>
+
+		<div class="col-md-10">
+			<h2>
+				<a class="text-decoration-none" href="{{ app_description_subject }}">{{ subject.title }}</a>
+			</h2>
+			<p>
+				{{ subject.createdAt|date('d M Y') }}
+			</p>
+            {{ subject.featuredText ?: subject.content|striptags|slice(0, 130) ~ '...' }}
+		</div>
+    </div>
+</article>

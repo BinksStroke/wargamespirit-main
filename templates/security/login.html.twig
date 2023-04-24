@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion
+{% endblock %}
+
+{% block body %}
+	<body>
+		<div class="background-co row">
+			<div class="container p-4 col-lg-3 col-sm-6 roboto-connexion">
+				<form class="bg-light" method="post">
+					{% if error %}
+						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+					{% if app.user %}
+						<div class="mb-3">
+							You are logged in as
+							{{ app.user.userIdentifier }},
+							<a href="{{ path('app_logout') }}">Logout</a>
+						</div>
+					{% endif %}
+					<div class="shadow-img connexion-radius">
+						<div class="color-back-co">
+							<h1 class="h3 mb-3 p-4 font-weight-normal text-center ll">Connectez-vous</h1>
+						</div>
+						<p class="p-4 text-center fst-italic">Connectez vous à votre compte Univers WargameSpirit</p>
+						<div class="connexion-content p-4">
+							<label for="inputEmail">Email</label>
+							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+							<label for="inputPassword">Mot de passe</label>
+							<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+						</div>
+
+						<div class="d-grid mx-auto">
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							<button class="btn btn-lg btn-success" type="submit">Se connecter</button>
+						</div>
+
+
+						<div>
+							<p class="p-4 fst-italic">Vous ne possédez pas de compte Univers WargameSpirit?
+								<a class="link-to-insc" href="{{ path('app_register') }}">Inscrivez-vous dès maintenant !</a>
+							</p>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+{% endblock %}
